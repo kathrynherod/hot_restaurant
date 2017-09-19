@@ -1,0 +1,19 @@
+{
+  "name": "hot_restaurant",
+  "version": "1.0.0",
+  "description": "it's so hot in herrr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kathrynherod/hot_restaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kathrynherod/hot_restaurant/issues"
+  },
+  "homepage": "https://github.com/kathrynherod/hot_restaurant#readme"
+}
