@@ -1,32 +1,35 @@
 // Dependencies
+// =============================================================
+var express = require("express");
+var bodyParser = require("body-parser");
+var path = require("path");
+
+// Sets up the Express App
+// =============================================================
+var app = express();
 var http = require("http");
 var fs = require("fs");
+
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({
+    type: "application/vnd.api+json"
+}));
 
 // Set our port to 8080
 var PORT = process.env.PORT || 8080;
 
-// Create our server
-var server = http.createServer(handleRequest);
-
-// Create a function for handling the requests and responses coming into our server
-function handleRequest(req, res) {
-
-    // Here we use the fs package to read our index.html file
-    fs.readFile(__dirname + "/index.html", function(err, data) {
-
-        // We then respond to the client with the HTML page by specifically telling the browser that we are delivering
-        // an html file.
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
-    });
-
-}
-
-// Starts our server
-server.listen(PORT, function() {
-    console.log("Server is listening on PORT: " + PORT);
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+});
 
 var mysql = require('mysql');
 var sql = {
